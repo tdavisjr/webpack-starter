@@ -8,13 +8,15 @@ const paths = {
     ROOT: path.resolve(__dirname),
     DIST: path.resolve(__dirname, 'dist'),
     JS: path.resolve(__dirname, 'src/js'),
-    SCSS: path.resolve(__dirname, 'src/scss')
+    SCSS: path.resolve(__dirname, 'src/scss'),
+    CSS: path.resolve(__dirname, 'src/css'),
 };
 
 const config = {
     entry: [ 
         path.join(paths.JS, 'app.js'), 
-        path.join(paths.SCSS, 'main.scss')
+        path.join(paths.CSS, 'custom.css'),
+        path.join(paths.SCSS, 'main.scss'),
     ],
     output: {
         path: paths.DIST,
@@ -39,7 +41,7 @@ const config = {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|css)$/,
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
                   fallback: 'style-loader',
